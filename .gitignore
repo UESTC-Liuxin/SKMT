@@ -128,7 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+
+
 .pth
-/mmsegmentation/data
-/mmsegmentation/checkpoints
-/mmsegmentation/voc_result
+.png
+.jpg
+
