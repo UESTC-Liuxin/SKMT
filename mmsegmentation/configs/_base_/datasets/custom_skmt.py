@@ -2,7 +2,7 @@
 dataset_type = 'SkmtDataset'
 data_root = 'data/VOCdevkit/Seg/skmt5'
 img_norm_cfg = dict(
-    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
+    mean=[34.73, 34.81, 34.45], std=[13.96,13.93,14.05], to_rgb=True)
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
