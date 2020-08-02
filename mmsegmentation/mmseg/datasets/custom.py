@@ -142,6 +142,7 @@ class CustomDataset(Dataset):
                     img_info['ann'] = dict(seg_map=seg_map)
                 img_infos.append(img_info)
 
+        #这里输出了
         print_log(f'Loaded {len(img_infos)} images', logger=get_root_logger())
         return img_infos
 
@@ -220,9 +221,10 @@ class CustomDataset(Dataset):
         for img_info in self.img_infos:
             gt_seg_map = mmcv.imread(
                 img_info['ann']['seg_map'], flag='unchanged', backend='pillow')
-            # print(gt_seg_map.shape)
+
             if self.reduce_zero_label:
                 # avoid using underflow conversion
+
                 gt_seg_map[gt_seg_map == 0] = 255
                 gt_seg_map = gt_seg_map - 1
                 gt_seg_map[gt_seg_map == 254] = 255

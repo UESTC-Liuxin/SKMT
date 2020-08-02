@@ -76,6 +76,7 @@ def train_segmentor(model,
         work_dir=cfg.work_dir,
         logger=logger,
         meta=meta)
+
     # register hooks
     runner.register_training_hooks(cfg.lr_config, cfg.optimizer_config,
                                    cfg.checkpoint_config, cfg.log_config,
@@ -83,6 +84,7 @@ def train_segmentor(model,
 
     # an ugly walkaround to make the .log and .log.json filenames the same
     runner.timestamp = timestamp
+
     # register eval hooks
     if validate:
         val_dataset = build_dataset(cfg.data.val, dict(test_mode=True))

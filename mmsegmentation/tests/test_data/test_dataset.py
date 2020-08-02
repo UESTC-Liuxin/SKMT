@@ -6,7 +6,7 @@ import pytest
 
 from mmseg.core.evaluation import get_classes, get_palette
 from mmseg.datasets import (ADE20KDataset, CityscapesDataset, ConcatDataset,
-                            CustomDataset, PascalVOCDataset, RepeatDataset,SkmtDataset)
+                            CustomDataset, PascalVOCDataset, RepeatDataset,USDataset,SkmtDataset)
 
 
 def test_classes():
@@ -15,7 +15,7 @@ def test_classes():
         'pascal_voc')
     assert list(
         ADE20KDataset.CLASSES) == get_classes('ade') == get_classes('ade20k')
-    assert list(SkmtDataset.CLASSES) == get_classes('skmt')
+
     with pytest.raises(ValueError):
         get_classes('unsupported')
 
@@ -25,8 +25,6 @@ def test_palette():
     assert PascalVOCDataset.PALETTE == get_palette('voc') == get_palette(
         'pascal_voc')
     assert ADE20KDataset.PALETTE == get_palette('ade') == get_palette('ade20k')
-    #skmt
-    assert SkmtDataset.PALETTE == get_palette('skmt')
 
     with pytest.raises(ValueError):
         get_palette('unsupported')
@@ -60,8 +58,105 @@ def test_dataset_wrapper():
 
 
 def test_custom_dataset():
+    # img_norm_cfg = dict(
+    #     mean=[123.675, 116.28, 103.53],
+    #     std=[58.395, 57.12, 57.375],
+    #     to_rgb=True)
+    # crop_size = (512, 1024)
+    # train_pipeline = [
+    #     dict(type='LoadImageFromFile'),
+    #     dict(type='LoadAnnotations'),
+    #     dict(type='Resize', img_scale=(128, 256), ratio_range=(0.5, 2.0)),
+    #     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
+    #     dict(type='RandomFlip', flip_ratio=0.5),
+    #     dict(type='PhotoMetricDistortion'),
+    #     dict(type='Normalize', **img_norm_cfg),
+    #     dict(type='Pad', size=crop_size, pad_val=0, seg_pad_val=255),
+    #     dict(type='DefaultFormatBundle'),
+    #     dict(type='Collect', keys=['img', 'gt_semantic_seg']),
+    # ]
+    # test_pipeline = [
+    #     dict(type='LoadImageFromFile'),
+    #     dict(
+    #         type='MultiScaleFlipAug',
+    #         img_scale=(128, 256),
+    #         # img_ratios=[0.5, 0.75, 1.0, 1.25, 1.5, 1.75],
+    #         flip=False,
+    #         transforms=[
+    #             dict(type='Resize', keep_ratio=True),
+    #             dict(type='RandomFlip'),
+    #             dict(type='Normalize', **img_norm_cfg),
+    #             dict(type='ImageToTensor', keys=['img']),
+    #             dict(type='Collect', keys=['img']),
+    #         ])
+    # ]
+    #
+    # # with img_dir and ann_dir
+    # train_dataset = CustomDataset(
+    #     train_pipeline,
+    #     data_root=osp.join(osp.dirname(__file__), '../data/pseudo_dataset'),
+    #     img_dir='imgs/',
+    #     ann_dir='gts/',
+    #     img_suffix='img.jpg',
+    #     seg_map_suffix='gt.png')
+    # assert len(train_dataset) == 5
+    #
+    # # with img_dir, ann_dir, split
+    # train_dataset = CustomDataset(
+    #     train_pipeline,
+    #     data_root=osp.join(osp.dirname(__file__), '../data/pseudo_dataset'),
+    #     img_dir='imgs/',
+    #     ann_dir='gts/',
+    #     img_suffix='img.jpg',
+    #     seg_map_suffix='gt.png',
+    #     split='splits/train.txt')
+    # assert len(train_dataset) == 4
+    #
+    # # no data_root
+    # train_dataset = CustomDataset(
+    #     train_pipeline,
+    #     img_dir=osp.join(osp.dirname(__file__), '../data/pseudo_dataset/imgs'),
+    #     ann_dir=osp.join(osp.dirname(__file__), '../data/pseudo_dataset/gts'),
+    #     img_suffix='img.jpg',
+    #     seg_map_suffix='gt.png')
+    # assert len(train_dataset) == 5
+    #
+    # # with data_root but img_dir/ann_dir are abs path
+    # train_dataset = CustomDataset(
+    #     train_pipeline,
+    #     data_root=osp.join(osp.dirname(__file__), '../data/pseudo_dataset'),
+    #     img_dir=osp.abspath(
+    #         osp.join(osp.dirname(__file__), '../data/pseudo_dataset/imgs')),
+    #     ann_dir=osp.abspath(
+    #         osp.join(osp.dirname(__file__), '../data/pseudo_dataset/gts')),
+    #     img_suffix='img.jpg',
+    #     seg_map_suffix='gt.png')
+    # assert len(train_dataset) == 5
+    #
+    # # test_mode=True
+    # test_dataset = CustomDataset(
+    #     test_pipeline,
+    #     img_dir=osp.join(osp.dirname(__file__), '../data/pseudo_dataset/imgs'),
+    #     img_suffix='img.jpg',
+    #     test_mode=True)
+    # assert len(test_dataset) == 5
+    #
+    # # training data get
+    # train_data = train_dataset[0]
+    # assert isinstance(train_data, dict)
+    #
+    # # test data get
+    # test_data = test_dataset[0]
+    # assert isinstance(test_data, dict)
+    #
+    # # get gt seg map
+    # gt_seg_maps = train_dataset.get_gt_seg_maps()
+    # assert len(gt_seg_maps) == 5
 
-    #******************skmt***************************************
+    # dataset settings
+    # data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/Seg/skmt5'
+    # data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/VOC2012'
+    data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/US_dataset'
     img_norm_cfg = dict(
         mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
     crop_size = (512, 512)
@@ -77,97 +172,19 @@ def test_custom_dataset():
         dict(type='DefaultFormatBundle'),
         dict(type='Collect', keys=['img', 'gt_semantic_seg']),
     ]
-    test_pipeline = [
-        dict(type='LoadImageFromFile'),
-        dict(
-            type='MultiScaleFlipAug',
-            img_scale=(2048, 512),
-            # img_ratios=[0.5, 0.75, 1.0, 1.25, 1.5, 1.75],
-            flip=False,
-            transforms=[
-                dict(type='Resize', keep_ratio=True),
-                dict(type='RandomFlip'),
-                dict(type='Normalize', **img_norm_cfg),
-                dict(type='ImageToTensor', keys=['img']),
-                dict(type='Collect', keys=['img']),
-            ])
-    ]
+
     # with img_dir and ann_dir
-    train_dataset = SkmtDataset(
-        split='ImageSets/train.txt',
-        pipeline=train_pipeline,
-        data_root= '/home/liuxin/Documents/CV/Project/mmsegmentation/data/VOCdevkit/Seg/skm4',
-        img_dir='JPEGImages/',
-        ann_dir='SegmentationClass/'
+    train_dataset = USDataset(
+        split='ImageSets/Segmentation/train.txt',
+        data_root=data_root,
+        img_dir='JPEGImages',
+        ann_dir='SegmentationClass',
+        pipeline=train_pipeline
     )
-    test_dataset = SkmtDataset(
-        split='ImageSets/val.txt',
-        pipeline=train_pipeline,
-        data_root= '/home/liuxin/Documents/CV/Project/mmsegmentation/data/VOCdevkit/Seg/skm4',
-        img_dir='JPEGImages/',
-        ann_dir='SegmentationClass/'
-    )
-    # assert len(train_dataset) == 107
-
-#*********************VOC************************
-    # img_norm_cfg = dict(
-    #     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
-    # crop_size = (512, 512)
-    # train_pipeline = [
-    #     dict(type='LoadImageFromFile'),
-    #     dict(type='LoadAnnotations'),
-    #     dict(type='Resize', img_scale=(2048, 512), ratio_range=(0.5, 2.0)),
-    #     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    #     dict(type='RandomFlip', flip_ratio=0.5),
-    #     dict(type='PhotoMetricDistortion'),
-    #     dict(type='Normalize', **img_norm_cfg),
-    #     dict(type='Pad', size=crop_size, pad_val=0, seg_pad_val=255),
-    #     dict(type='DefaultFormatBundle'),
-    #     dict(type='Collect', keys=['img', 'gt_semantic_seg']),
-    # ]
-    # test_pipeline = [
-    #     dict(type='LoadImageFromFile'),
-    #     dict(
-    #         type='MultiScaleFlipAug',
-    #         img_scale=(2048, 512),
-    #         # img_ratios=[0.5, 0.75, 1.0, 1.25, 1.5, 1.75],
-    #         flip=False,
-    #         transforms=[
-    #             dict(type='Resize', keep_ratio=True),
-    #             dict(type='RandomFlip'),
-    #             dict(type='Normalize', **img_norm_cfg),
-    #             dict(type='ImageToTensor', keys=['img']),
-    #             dict(type='Collect', keys=['img']),
-    #         ])
-    # ]
-    # # with img_dir and ann_dir
-    # train_dataset = SkmtDataset(
-    #     split='ImageSets/train.txt',
-    #     pipeline=train_pipeline,
-    #     data_root= '/home/liuxin/Documents/CV/Project/mmsegmentation/data/VOCdevkit/VOC2012',
-    #     img_dir='JPEGImages/',
-    #     ann_dir='SegmentationClass/'
-    # )
-    # test_dataset = SkmtDataset(
-    #     split='ImageSets/val.txt',
-    #     pipeline=train_pipeline,
-    #     data_root= '/home/liuxin/Documents/CV/Project/mmsegmentation/data/VOCdevkit/VOC2012',
-    #     img_dir='JPEGImages/',
-    #     ann_dir='SegmentationClass/'
-    # )
-#**************************************************************************************
-    # training data get
-    train_data = train_dataset[0]
-    assert isinstance(train_data, dict)
-
-    # test data get
-    test_data = test_dataset[0]
-    assert isinstance(test_data, dict)
 
     # get gt seg map
     gt_seg_maps = train_dataset.get_gt_seg_maps()
-    # assert len(gt_seg_maps) == 107
-    assert gt_seg_maps[0].ndim==2
+
     # evaluation
     pseudo_results = []
     for gt_seg_map in gt_seg_maps:
@@ -180,12 +197,12 @@ def test_custom_dataset():
     assert 'aAcc' in eval_results
 
     # evaluation with CLASSES
-    # train_dataset.CLASSES = tuple(['a'] * 7)
+    train_dataset.CLASSES = tuple(['a'] * 16)
     eval_results = train_dataset.evaluate(pseudo_results)
     assert isinstance(eval_results, dict)
     assert 'mIoU' in eval_results
     assert 'mAcc' in eval_results
     assert 'aAcc' in eval_results
 
-if __name__ == '__main__':
-    test_custom_dataset()
+
+test_custom_dataset()

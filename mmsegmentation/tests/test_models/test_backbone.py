@@ -650,7 +650,7 @@ def test_resnext_backbone():
 
     # Test ResNeXt with group 32, base_width 4
     model = ResNeXt(depth=50, groups=32, base_width=4)
-    # print(model)
+    print(model)
     for m in model.modules():
         if is_block(m):
             assert m.conv2.groups == 32

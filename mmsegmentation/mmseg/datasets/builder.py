@@ -2,7 +2,7 @@ import copy
 import platform
 import random
 from functools import partial
-
+import time
 import numpy as np
 from mmcv.parallel import collate
 from mmcv.runner import get_dist_info
@@ -20,7 +20,6 @@ if platform.system() != 'Windows':
 
 DATASETS = Registry('dataset')
 PIPELINES = Registry('pipeline')
-
 
 def _concat_dataset(cfg, default_args=None):
     """Build :obj:`ConcatDataset by."""
@@ -68,10 +67,11 @@ def build_dataset(cfg, default_args=None):
             build_dataset(cfg['dataset'], default_args), cfg['times'])
     elif isinstance(cfg.get('img_dir'), (list, tuple)) or isinstance(
             cfg.get('split', None), (list, tuple)):
+
         dataset = _concat_dataset(cfg, default_args)
     else:
+        #默认执行到这里
         dataset = build_from_cfg(cfg, DATASETS, default_args)
-
     return dataset
 
 

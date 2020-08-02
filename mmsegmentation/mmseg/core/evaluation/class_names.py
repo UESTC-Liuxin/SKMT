@@ -1,5 +1,19 @@
 import mmcv
 
+######################custom#########################
+def skmt_classes():
+    """Cityscapes class names for external use."""
+    return [
+        'background', 'C', 'GL', 'SAS',
+        'SAC', 'SUP', 'INF', 'LHF', 'HH',
+        'SCB', 'SHB', 'TM', 'SUB', 'D',
+        'GC', 'LHB'
+    ]
+def us_classes():
+    """Cityscapes class names for external use."""
+    return [
+        'background', 'C'
+    ]
 
 def cityscapes_classes():
     """Cityscapes class names for external use."""
@@ -50,12 +64,18 @@ def voc_classes():
         'tvmonitor'
     ]
 
-def skmt_classes():
-    return [
-        'background', 'C', 'GL', 'SAS', 'SAC', 'SUP', 'INF',
-         'LHF', 'HH', 'SCB', 'SHB', 'TM', 'SUB', 'D',
-         'GC', 'LHB'
-    ]
+###############custom##########################
+def skmt_palette():
+    """skmt palette for external use."""
+    return [[32, 112, 48], [48, 112, 32], [176, 240, 32], [240, 112, 32],
+               [112, 112, 32], [240, 112, 160], [176, 112, 160], [176, 240, 160],[48, 112, 160],
+               [112, 240, 32], [240, 240, 32], [112, 240, 160],[112, 112, 160], [176, 112, 32],
+               [48, 240, 32], [48, 240, 160]]
+
+def us_palette():
+    """skmt palette for external use."""
+    return [[0,0,0],[255,0,0]]
+
 
 def cityscapes_palette():
     """Cityscapes palette for external use."""
@@ -116,19 +136,14 @@ def voc_palette():
             [192, 0, 128], [64, 128, 128], [192, 128, 128], [0, 64, 0],
             [128, 64, 0], [0, 192, 0], [128, 192, 0], [0, 64, 128]]
 
-def skmt_palette():
-    """skmt palette for external use."""
-    return [[32, 112, 48], [48,112,32], [176,240,32], [240,112,32], [112,112,32],
-               [240,112,160], [176,112,160], [176,240,160],
-               [48,112,160], [112,240,32], [240,240,32], [112,240,160],
-               [112,112,160], [176,112,32], [48,240,32], [48,240,160]]
+
+
 
 
 dataset_aliases = {
     'cityscapes': ['cityscapes'],
     'ade': ['ade', 'ade20k'],
-    'voc': ['voc', 'pascal_voc', 'voc12', 'voc12aug'],
-    'skmt':['skmt']
+    'voc': ['voc', 'pascal_voc', 'voc12', 'voc12aug']
 }
 
 
