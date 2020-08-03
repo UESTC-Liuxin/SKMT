@@ -56,7 +56,7 @@ def count_rgb(imgs_path):
 
 
 def count_anns_category(coco):
-    '''count the distribution of annotations
+    '''count the category distribution of annotations
 
     Args:
         coco:the obj of COCO
@@ -70,6 +70,16 @@ def count_anns_category(coco):
         countor_values[ann['category_id']]+=1
     countor_dict = dict(zip(SkmtDataset.CLASSES, countor_values))
     return countor_dict
+
+def coun_anns_area(coco):
+    '''
+
+    Args:
+        coco:
+
+    Returns:
+
+    '''
 
 
 if __name__ == '__main__':

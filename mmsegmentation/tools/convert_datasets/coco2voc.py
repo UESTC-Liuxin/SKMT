@@ -13,7 +13,7 @@ dataset_root = '/home/liuxin/Documents/CV/dataset/VOCdevkit/Seg/skmt5'
 dataType = 'default'
 annFile = '{}/annotations/instances_{}.json'.format(dataset_root, dataType)
 img_path=os.path.join(dataset_root,'JPEGImages')
-seg_img_path=os.path.join(dataset_root,'seg_map')
+seg_img_path=os.path.join(dataset_root,'SegmentationClass')
 #读取coco文件
 coco = COCO(annFile)
 
@@ -33,7 +33,7 @@ coco = COCO(annFile)
 def get_mask(anns,seg_mask):
     for ann in anns:
         mask = coco.annToMask(ann)
-        seg_mask[np.where(mask)]=SkmtDataset.PALETTE[ann['category_id']]
+        seg_mask[np.where(mask)]=ann['category_id']
         # return mask
     img = Image.fromarray(seg_mask.astype('uint8')).convert('P')
     return img
@@ -50,11 +50,11 @@ def ann_to_segmap(coco):
     for index,img_info in enumerate(img_infos):
         file_name=os.path.join(img_path,img_info['file_name'])
         img=Image.open(file_name)
-        seg_mask=np.zeros((img.size[1],img.size[0],3),dtype=np.int)
+        seg_mask=np.zeros((img.size[1],img.size[0]),dtype=np.int)
         annIds = coco.getAnnIds(imgIds=img_info['id'], iscrowd=None)
         anns = coco.loadAnns(annIds)
         seg_map=get_mask(anns,seg_mask)
-        # seg_map.save(os.path.join(seg_map_path,img_info['file_name'].replace('jpg','png')))
+        seg_map.save(os.path.join(seg_img_path,img_info['file_name'].replace('jpg','png')))
 
 
 def check_imgs():
@@ -77,4 +77,5 @@ if __name__ =='__main__':
     # ann_to_segmap(img_infos,seg_img_path)
     # check_imgs()
     # ann_to_segmap(img_infos,seg_img_path)
-    count_anns_category(coco)
+    # count_anns_category(coco)
+    ann_to_segmap(coco)

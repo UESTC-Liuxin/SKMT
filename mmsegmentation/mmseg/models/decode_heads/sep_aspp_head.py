@@ -78,6 +78,8 @@ class DepthwiseSeparableASPPHead(ASPPHead):
     def forward(self, inputs):
         """Forward function."""
         x = self._transform_inputs(inputs)
+        # print(x.size())
+
         aspp_outs = [
             resize(
                 self.image_pool(x),
@@ -85,6 +87,7 @@ class DepthwiseSeparableASPPHead(ASPPHead):
                 mode='bilinear',
                 align_corners=self.align_corners)
         ]
+
         aspp_outs.extend(self.aspp_modules(x))
         aspp_outs = torch.cat(aspp_outs, dim=1)
         output = self.bottleneck(aspp_outs)
@@ -98,4 +101,5 @@ class DepthwiseSeparableASPPHead(ASPPHead):
             output = torch.cat([output, c1_output], dim=1)
         output = self.sep_bottleneck(output)
         output = self.cls_seg(output)
+        # print(a)
         return output

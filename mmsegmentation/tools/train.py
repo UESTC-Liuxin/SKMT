@@ -67,8 +67,8 @@ def main():
     if args.options is not None:
         cfg.merge_from_dict(args.options)
     # set cudnn_benchmark
-    if cfg.get('cudnn_benchmark', False):
-        torch.backends.cudnn.benchmark = True
+    # if cfg.get('cudnn_benchmark', False):
+    #     torch.backends.cudnn.benchmark = True
 
     # work_dir is determined in this priority: CLI > segment in file > filename
     if args.work_dir is not None:
@@ -113,8 +113,8 @@ def main():
     meta['env_info'] = env_info
 
     # log some basic info
-    # logger.info(f'Distributed training: {distributed}')
-    # logger.info(f'Config:\n{cfg.pretty_text}')
+    logger.info(f'Distributed training: {distributed}')
+    logger.info(f'Config:\n{cfg.pretty_text}')
 
     # set random seeds
     if args.seed is not None:
