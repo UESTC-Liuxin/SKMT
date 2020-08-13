@@ -182,6 +182,7 @@ class BaseSegmentor(nn.Module):
                 which may be a weighted sum of all losses, log_vars contains
                 all the variables to be sent to the logger.
         """
+        # print(a)
         log_vars = OrderedDict()
         for loss_name, loss_value in losses.items():
             if isinstance(loss_value, torch.Tensor):

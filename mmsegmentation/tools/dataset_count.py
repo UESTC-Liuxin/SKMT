@@ -13,18 +13,17 @@ import matplotlib.pyplot as plt
 import cv2
 
 
-dataset_root = '/home/liuxin/Documents/CV/dataset/VOCdevkit/Seg/skmt5'
+dataset_root = '/home/liuxin/Documents/CV/Project/SKMT/mmsegmentation/data/SKMT/Seg'
 dataType = 'default'
 annFile = '{}/annotations/instances_{}.json'.format(dataset_root, dataType)
 img_path=os.path.join(dataset_root,'JPEGImages')
 seg_img_path=os.path.join(dataset_root,'seg_map')
 #读取coco文件
-coco = COCO(annFile)
+# coco = COCO(annFile)
 
 
 def count_rgb(imgs_path):
-    '''
-    count all the mean and std of RGB channels of origin imge
+    '''count all the mean and std of RGB channels of origin imge
     Args:
         imgs_path:the path of origin imgs
 
@@ -80,14 +79,31 @@ def coun_anns_area(coco):
     Returns:
 
     '''
+    pass
 
+def count_anns_category(coco):
+    '''
+    
+    Args:
+        coco:
+
+    Returns:
+
+    '''
+    anns = coco.loadAnns(coco.getAnnIds())
+    countor_values=[0]*len(SkmtDataset.CLASSES)
+    for ann in anns:
+        mask = coco.annToMask(ann)
+        countor_values[ann['category_id']]+=1
+    countor_dict = dict(zip(SkmtDataset.CLASSES, countor_values))
+    print(countor_dict)
 
 if __name__ == '__main__':
-    countor_dict=count_anns_category(coco)
-    print(countor_dict)
-    x=[index for index in range(len(countor_dict))]
-    y=countor_dict.values()
-    plt.bar(x,y,label='the dist of cate')
+    # countor_dict=count_anns_category(coco)
+    # print(countor_dict)
+    # x=[index for index in range(len(countor_dict))]
+    # y=countor_dict.values()
+    # plt.bar(x,y,label='the dist of cate')
     # plt.show()
     mean_dict,std_dict=count_rgb(img_path)
     print('mean:',mean_dict)

@@ -1,8 +1,8 @@
 # dataset settings
 dataset_type = 'SkmtDataset'
-data_root = 'data/VOCdevkit/Seg/skmt5'
+data_root = 'data/SKMT/Seg'
 img_norm_cfg = dict(
-    mean=[34.73, 34.81, 34.45], std=[13.96,13.93,14.05], to_rgb=True)
+    mean=[34.73, 34.81, 34.45], std=[11.49,11.47,11.59], to_rgb=True)
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
@@ -25,6 +25,7 @@ test_pipeline = [
         flip=False,
         transforms=[
             dict(type='Resize', keep_ratio=True),
+            dict(type='PhotoMetricDistortion'),
             dict(type='RandomFlip'),
             dict(type='Normalize', **img_norm_cfg),
             dict(type='ImageToTensor', keys=['img']),
@@ -32,26 +33,26 @@ test_pipeline = [
         ])
 ]
 data = dict(
-    samples_per_gpu=2,
-    workers_per_gpu=2,
+    samples_per_gpu=4,
+    workers_per_gpu=4,
     train=dict(
         type=dataset_type,
         data_root=data_root,
         img_dir='JPEGImages',
         ann_dir='SegmentationClass',
-        split='ImageSets/Segmentation/train.txt',
+        split='ImageSets/train.txt',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         data_root=data_root,
         img_dir='JPEGImages',
         ann_dir='SegmentationClass',
-        split='ImageSets/Segmentation/val.txt',
+        split='ImageSets/val.txt',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         data_root=data_root,
         img_dir='JPEGImages',
         ann_dir='SegmentationClass',
-        split='ImageSets/Segmentation/val.txt',
+        split='ImageSets/val.txt',
         pipeline=test_pipeline))

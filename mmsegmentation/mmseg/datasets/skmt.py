@@ -23,7 +23,7 @@ class SkmtDataset(CustomDataset):
 
     def __init__(self, split, **kwargs):
         super(SkmtDataset, self).__init__(
-            img_suffix='.jpg', seg_map_suffix='.png', split=split, reduce_zero_label=True,**kwargs)
+            img_suffix='.jpg', seg_map_suffix='.png', split=split, reduce_zero_label=False,**kwargs)
         assert osp.exists(self.img_dir) and self.split is not None
 
     # def encode_segmap(self,mask):

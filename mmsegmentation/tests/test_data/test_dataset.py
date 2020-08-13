@@ -154,9 +154,9 @@ def test_custom_dataset():
     # assert len(gt_seg_maps) == 5
 
     # dataset settings
-    # data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/Seg/skmt5'
+    data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/Seg/skmt5'
     # data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/VOC2012'
-    data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/US_dataset'
+    # data_root = '/media/Program/CV/Project/SKMT/mmsegmentation/data/VOCdevkit/US_dataset'
     img_norm_cfg = dict(
         mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
     crop_size = (512, 512)
