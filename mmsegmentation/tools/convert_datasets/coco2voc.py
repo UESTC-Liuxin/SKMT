@@ -61,9 +61,12 @@ def get_mask(coco,anns,file_name,prefix=None):
 def ann_to_segmap(coco,input_root,output_root,prefix):
     '''
     get anns of each img and build a seg_map ,and save it to the seg_map_path
+
     Args:
         coco(COCO): obj of coco
-
+        input_root:
+        output_root:
+        prefix: the prefix of newname for images,ig:Shoulder11_200812_1.jpg
     Returns:
         None
     '''

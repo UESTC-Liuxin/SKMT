@@ -29,7 +29,7 @@ def read_information(ds):
         print(col)
 
 def dcm2jpg(data_root):
-    dcm_root=os.path.join(data_root,'DICOM','DICOM_20_8_5')
+    dcm_root=os.path.join(data_root,'DICOM','DICOM_20_9_5')
     for file_index,file_name in enumerate(os.listdir(dcm_root)):
         file_path=os.path.join(data_root,'JPEG',file_name)
         #create sub dirs
@@ -44,14 +44,14 @@ def dcm2jpg(data_root):
         imgs=get_pixel_array_rgb(ds)
         if imgs.ndim >2:
             for img_index in range(imgs.shape[0]):
-                img_name=os.path.join(file_path,'20_8_5'+file_name+'_'+str(img_index)+'.jpg')
+                img_name=os.path.join(file_path,'20_9_5'+file_name+'_'+str(img_index)+'.jpg')
                 try:
-                    img=cv2.cvtColor(imgs[img_index],cv2.COLOR_RGB2GRAY)
+                    img=cv2.cvtColor(imgs[img_index],cv2.COLOR_GRAY2RGB)
                 except:
                     img=imgs[img_index]
                 cv2.imwrite(img_name,img)
         else:
-            img_name = os.path.join(file_path, '20_8_5'+file_name + '_' + '.jpg')
+            img_name = os.path.join(file_path, '20_9_5'+file_name + '_' + '.jpg')
             cv2.imwrite(img_name, imgs)
 
 

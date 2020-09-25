@@ -2,7 +2,7 @@
 dataset_type = 'SkmtDataset'
 data_root = 'data/SKMT/Seg'
 img_norm_cfg = dict(
-    mean=[34.73, 34.81, 34.45], std=[11.49,11.47,11.59], to_rgb=True)
+    mean=[32.15, 34.81, 34.45], std=[11.49,11.47,11.59], to_rgb=True)
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),

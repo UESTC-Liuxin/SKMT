@@ -20,27 +20,6 @@ output_root='/home/liuxin/Documents/CV/dataset/SKMT/Seg'
 
 
 
-# def add_dict(prefix_dict,cwd):
-#     '''
-#
-#     Args:
-#         prefix_dict:
-#         cwd: a unicode string representing the current working directory.
-#
-#     Returns:
-#
-#     '''
-#     dir_list=os.listdir(cwd)
-#     if not dir_list :
-#         return
-#     for key in dir_list:
-#         dir=os.path.join(cwd,key)
-#         if os.path.isfile(dir):
-#             prefix_dict[key] = dir_list
-#             continue
-#         prefix_dict[key] = Dict()
-#         add_dict(prefix_dict[key],dir)
-
 
 def add_subdataset(subdataset_list,cwd):
     '''
@@ -80,9 +59,10 @@ def search_subdataset(data_root):
     add_subdataset(subdataset_list,data_root)
     return subdataset_list
 
-def cotact_dataset(input_root,output_root):
+def contact_dataset(input_root,output_root):
     '''
-
+    search all sub coco dataset in input_root,and contact it to a list;
+    according to the dataset info to rename images(ig:Shoulder11_200812_1.jpg) and save it.
     Args:
         data_root:
 
@@ -112,5 +92,5 @@ if __name__ == '__main__':
 
     # a = prefix_dict = Dict()
     # search_subdataset(input_root)
-    cotact_dataset(input_root, output_root)
+    contact_dataset(input_root, output_root)
 

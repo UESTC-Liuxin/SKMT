@@ -9,7 +9,7 @@
 import os
 import numpy as np
 
-class ImageSets(object):
+class SplitImageSets(object):
     """
     description:
     """
@@ -21,8 +21,9 @@ class ImageSets(object):
         self.joint_key=joint_key
         self.__build_files_table()
 
+
     def __build_files_table(self):
-        """
+        """build files table according to the section_num
 
         Returns:
 
@@ -38,13 +39,13 @@ class ImageSets(object):
                 file_name.replace('.jpg','').replace('.png',''))
             self.__split_ratio_table[section_num]=self.default_split_ratio
 
-    # TODO: here should be more rigorous
+    # TODO: here should be more rigorous,because set is not an ordered data structure
     def random_split(self,shuffle=True,random_seed=None):
         """
 
         Args:
-            shuffle:invalid para,because
-            random_seed:
+            shuffle:invalid para,because use set
+            random_seed: invalid para,because use set
 
         Returns:
 
@@ -56,10 +57,10 @@ class ImageSets(object):
 
         for (key,file_list) in self.__files_table.items():
             sample_num=round(len(file_list) * self.__split_ratio_table[key])
-
+            #随机不重复采样
             trian_temp_set = set(np.random.choice(file_list,sample_num,replace=False))
             val_temp_set = set(file_list)-trian_temp_set
-
+            #合并集合
             train_set=train_set | trian_temp_set
             val_set =val_set | val_temp_set
         assert (len(train_set)+len(val_set))==len(
@@ -83,8 +84,6 @@ class ImageSets(object):
             file.write((file_name+'\n').encode())
         file.close()
 
-
-
     @property
     def files_table(self):
         return self.__files_table
@@ -98,20 +97,29 @@ class ImageSets(object):
         return self.__split_ratio_table[key]
 
     @split_ratio.setter
-    def split_ratio(self,*args):
-        key =args[0][0]
-        value=args[0][1]
-        if not isinstance(value,float):
-            raise TypeError(f'value must be float,but got {type(value)}')
-        if not 0<value<1:
-            raise NameError(f'value must between 0 and 1,but got {value}')
-        if not (key in self.__split_ratio_table):
-            raise Exception("Invalid key!", key)
-        self.__split_ratio_table[key]=value
+    def split_ratio(self,arg):
+        """set split_ratio in __split_ratio_table
+        Args:
+            args:((key(str),value(float)),...)
+        Returns:None
+        @example:
+            imgset=SplitImageSets(data_root=data_root)
+            imgset.split_ratio=('1',0.9),('2',0.7)
+
+        """
+        for key,value in arg:
+            if not isinstance(value,float):
+                raise TypeError(f'value must be float,but got {type(value)}')
+            if not 0<value<1:
+                raise NameError(f'value must between 0 and 1,but got {value}')
+            if not (key in self.__split_ratio_table):
+                raise Exception("Invalid key!", key)
+            self.__split_ratio_table[key]=value
 
 
 if __name__ =='__main__':
     data_root = '/home/liuxin/Documents/CV/Project/SKMT/mmsegmentation/data/SKMT/Seg'
-    imgset=ImageSets(data_root=data_root)
+    imgset=SplitImageSets(data_root=data_root)
+    # imgset.split_ratio=('1',0.9),('2',0.7)
     # print(imgset.split_ratio_table)
-    imgset.random_split()
+    imgset.random_split(random_seed=1)
