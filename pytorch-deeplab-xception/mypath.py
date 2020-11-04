@@ -4,7 +4,7 @@ class Path(object):
         if dataset == 'pascal':
             return '/media/Program/CV/dataset/VOCdevkit/Seg/skmt5/'  # folder that contains VOCdevkit/.
         elif dataset == 'skmt':
-            return '/media/Program/CV/dataset/VOCdevkit/Seg/skmt5/'
+            return 'data/SKMT/Seg/'
         elif dataset == 'sbd':
             return '/path/to/datasets/benchmark_RELEASE/'  # folder that contains dataset/.
         elif dataset == 'cityscapes':

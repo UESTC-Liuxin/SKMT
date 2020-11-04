@@ -17,7 +17,7 @@ class SkmtSegmentation(Dataset):
     """
     PascalVoc dataset
     """
-    NUM_CLASSES = 17
+    NUM_CLASSES = 21
 
     def __init__(self,
                  args,
@@ -42,7 +42,7 @@ class SkmtSegmentation(Dataset):
 
         self.args = args
 
-        _splits_dir = os.path.join(self._base_dir, 'ImageSets', 'Segmentation')
+        _splits_dir = os.path.join(self._base_dir, 'ImageSets')
 
         self.im_ids = []
         self.images = []

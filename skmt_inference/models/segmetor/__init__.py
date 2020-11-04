@@ -7,8 +7,4 @@
 @Created on: 2020/9/27 下午3:35
 """
 
-
-from models.segmetor import deeplab
-
-
-
+from models.segmetor import aspp,deeplab,decoder

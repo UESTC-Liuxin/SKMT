@@ -29,7 +29,7 @@ def read_information(ds):
         print(col)
 
 def dcm2jpg(data_root):
-    dcm_root=os.path.join(data_root,'DICOM','DICOM_20_9_5')
+    dcm_root=os.path.join(data_root,'DICOM','S63160','S4010')
     for file_index,file_name in enumerate(os.listdir(dcm_root)):
         file_path=os.path.join(data_root,'JPEG',file_name)
         #create sub dirs
@@ -64,6 +64,6 @@ def rgbtojpg():
 
 
 if __name__ =='__main__':
-    data_root=os.path.join('/media/Program/CV/dataset/SKMT/')
+    data_root=os.path.join('F:\\CV\\Project\\SKMT\\mmsegmentation\\data')
     dcm2jpg(data_root)
 
