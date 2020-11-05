@@ -139,3 +139,13 @@ dmypy.json
 .png
 .jpg
 
+
+data
+runs_*
+*.pth
+
+
+RemoteSensorSeg/data
+RemoteSensorSeg/runs
+
+
