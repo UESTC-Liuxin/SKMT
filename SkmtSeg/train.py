@@ -87,7 +87,7 @@ class Trainer(object):
             )
             for param_group in self.optimizer.param_groups:
                 param_group['lr'] = lr
-            start_time = time.time()
+            # start_time = time.time()
             batch=self.dict_to_cuda(batch)
             output=self.model(batch)
             loss=self.criterion(output,batch).cuda()
@@ -96,15 +96,17 @@ class Trainer(object):
             self.optimizer.step()
             tloss.append(loss.item())
 
-            if (epoch % 50 == 0 and iter==0):
-                pred=np.asarray(np.argmax(output['out'][0].cpu().detach(), axis=0), dtype=np.uint8)
-                gt = batch['centre_labels'][0]  #每次显示第一张图片
+            if (epoch % self.args.show_interval == 0 and iter==0):
+                pred=np.asarray(np.argmax(output['trunk_out'][0].cpu().detach(), axis=0), dtype=np.uint8)
+                gt = batch['label'][0]  #每次显示第一张图片
                 gt=np.asarray(gt.cpu(), dtype=np.uint8)
-                self.visualize(gt, pred, epoch,writer)
+                self.visualize(gt, pred, iter,writer,"train")
+
+
         self.logger.info('======>epoch:{}---loss:{:.3f}'.format(epoch,sum(tloss)/len(tloss)))
         writer.add_scalar('train/loss_epoch', sum(tloss)/len(tloss), epoch)
 
-    def visualize(self,gt,pred,epoch,writer):
+    def visualize(self,gt,pred,epoch,writer,title):
         """
 
         :param input:
@@ -115,8 +117,8 @@ class Trainer(object):
         gt = self.dataloader.dataset.decode_segmap(gt)
 
         pred=self.dataloader.dataset.decode_segmap(pred)
-        self.summary.visualize_image(writer,'gt',gt,epoch)
-        self.summary.visualize_image(writer, 'pred', pred, epoch)
+        self.summary.visualize_image(writer,title+'/gt',gt,epoch)
+        self.summary.visualize_image(writer, title+'/pred', pred, epoch)
 
 
 #TODO:用于调试的visualize代码，观察取的图片和裁剪的图片是否有问题
@@ -135,11 +137,6 @@ def visualize(img,tag):
     plt.title(tag)
     plt.imshow(img)
     plt.show()
-
-
-
-
-
 
 
 

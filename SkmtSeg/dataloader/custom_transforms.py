@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+@description:
+
+@author: LiuXin
+@contact: xinliu1996@163.com
+@Created on: 2020/11/5 下午2:46
+"""
+
 import torch
 import random
 import numpy as np
@@ -40,7 +49,7 @@ class ToTensor(object):
         mask = np.array(mask).astype(np.float32)
 
         img = torch.from_numpy(img).float()
-        mask = torch.from_numpy(mask).float()
+        mask = torch.from_numpy(mask).long()
 
         return {'image': img,
                 'label': mask}

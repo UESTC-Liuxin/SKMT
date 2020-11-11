@@ -25,9 +25,9 @@ from utils.set_logger import get_logger
 
 from train import Trainer
 from test import Tester
-from dataloader.vaihingen import VaiHinGen
-from modeling.erftsn import build_erftsn
 
+from dataloader.skmt import SkmtDataSet
+from modeling import build_skmtnet
 
 def main(args,logger,summary):
     cudnn.enabled = True     # Enables bencnmark mode in cudnn, to enable the inbuilt
@@ -42,17 +42,22 @@ def main(args,logger,summary):
     torch.manual_seed(seed)  # set random seed for cpu
 
 
-    train_set = VaiHinGen(root=args.root, split='trainl',outer_size=2*args.image_size,centre_size=args.image_size)
-    test_set  = VaiHinGen(root=args.root, split='testl',outer_size=2*args.image_size,centre_size=args.image_size)
-    kwargs = {'num_workers': args.workers, 'pin_memory': True}
-    train_loader = DataLoader(train_set, batch_size=args.batch_size, drop_last=True, shuffle=True, **kwargs)
-    test_loader = DataLoader(test_set, batch_size=1, drop_last=True, shuffle=False, **kwargs)
+    # train_set = VaiHinGen(root=args.root, split='trainl',outer_size=2*args.image_size,centre_size=args.image_size)
+    # test_set  = VaiHinGen(root=args.root, split='testl',outer_size=2*args.image_size,centre_size=args.image_size)
 
-    # setup optimization criterion
-    criterion = Loss(args)
+    train_set=SkmtDataSet(args,split='train')
+    val_set = SkmtDataSet(args, split='val')
+    kwargs = {'num_workers': args.workers, 'pin_memory': True}
+
+    train_loader = DataLoader(train_set, batch_size=args.batch_size, drop_last=True, shuffle=False, **kwargs)
+    test_loader = DataLoader(val_set, batch_size=1, drop_last=True, shuffle=False, **kwargs)
+
+
     logger.info('======> building network')
     # set model
-    model = build_erftsn(auxiliary=args.auxiliary, trunk='deeplab', img_size=args.image_size).cuda()
+    model = build_skmtnet(backbone='resnet50',auxiliary_head=args.auxiliary, trunk_head='deeplab',
+                          num_classes=args.num_classes,output_stride = 16)
+
     logger.info("======> computing network parameters")
     total_paramters = netParams(model)
     logger.info("the number of parameters: " + str(total_paramters))
@@ -66,11 +71,13 @@ def main(args,logger,summary):
     if not os.path.exists(args.savedir):
         os.makedirs(args.savedir)
 
-
+    # setup optimization criterion
+    criterion = Loss(args)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)  # set random seed for all GPU
         os.environ['CUDA_VISIBLE_DEVICES'] = args.gpus
         model=nn.DataParallel(model).cuda()
+        criterion=criterion.cuda()
 
 
     start_epoch = 0
@@ -140,45 +147,53 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Semantic Segmentation...')
 
-    parser.add_argument('--model', default='erftsn', type=str)
-    parser.add_argument('--auxiliary', default='deeplab', type=str)
-    parser.add_argument('--root', default='data/VAI', help='data directory')
-
-    parser.add_argument('--batch_size', default=8, type=int)
+    parser.add_argument('--model', default='skmtnet', type=str)
+    parser.add_argument('--auxiliary', default='fcn', type=str)
+    parser.add_argument('--batch_size', default=2, type=int)
     parser.add_argument('--image_size', default=512, type=int)
-    parser.add_argument('--max_epochs', type=int, default=50000, help='the number of epochs: default 100 ')
-    parser.add_argument('--num_classes', default=6, type=int)
-    parser.add_argument('--lr', default=0.001, type=float)
+    parser.add_argument('--crop_size', default=512, type=int)
+    parser.add_argument('--max_epochs', type=int, help='the number of epochs: default 100 ')
+    parser.add_argument('--num_classes', type=int)
+    parser.add_argument('--lr', type=float)
     parser.add_argument('--weight_decay', default=4e-5, type=float)
-    parser.add_argument('--workers', type=int, default=1, help=" the number of parallel threads")
-    parser.add_argument('--show_interval', default=10, type=int)
-    parser.add_argument('--show_val_interval', default=1000, type=int)
-    parser.add_argument('--savedir', default="./runs_deeplab_resnet__deeplabv3_resnet/", help="directory to save the model snapshot")
+    parser.add_argument('--workers', type=int, default=4, help=" the number of parallel threads")
+    parser.add_argument('--show_interval', default=50, type=int)
+    parser.add_argument('--show_val_interval', default=1, type=int)
+    parser.add_argument('--savedir', default="./runs", help="directory to save the model snapshot")
     # parser.add_argument('--logFile', default= "log.txt", help = "storing the training and validation logs")
     parser.add_argument('--gpus', type=str, default='1')
+    parser.add_argument('--resume', default=None, help="the resume model path")
     args = parser.parse_args()
 
-    run_id = 'deeplab_resnet_deeplab_resnet_lr{}_bz{}'.format(args.lr,args.batch_size)\
-             +datetime.datetime.now().strftime('%Y-%m-%d_%H:%M')#现在
-    print('Now run_id {}'.format(run_id))
+    # 设置运行id
+    run_id = 'lr{}_bz{}'.format(args.lr, args.batch_size) \
+             + datetime.datetime.now().strftime('%Y-%m-%d_%H:%M')  # 现在
+
     args.savedir = os.path.join(args.savedir, str(run_id))
 
     if not os.path.exists(args.savedir):
         os.makedirs(args.savedir)
     logger = get_logger(args.savedir)
     logger.info('just do it')
+    logger.info('Now run_id {}'.format(run_id))
 
+    if (args.resume):
+        if not os.path.exists(args.resume):
+            raise Exception("the path of resume is empty!!")
+
+    # 设置tensorboard
     summary = TensorboardSummary(args.savedir)
 
     logger.info('======>Input arguments:')
-
     for key, val in vars(args).items():
         logger.info('======> {:16} {}'.format(key, val))
 
+    # 开始运行.........
     main(args, logger, summary)
     end = timeit.default_timer()
-    print("training time:", 1.0 * (end - start) / 3600)
-    print('model save in {}.'.format(run_id))
+    logger.info("training time:{:.4f}".format(1.0 * (end - start) / 3600))
+    logger.info('model save in {}.'.format(run_id))
+
 
 
 

@@ -2,16 +2,21 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from modeling.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
-from modeling.aspp import build_aspp
-from modeling.decoder import build_decoder
+from modeling.model_utils.aspp import build_aspp
+from modeling.model_utils.decoder import build_decoder
 from modeling.backbone import build_backbone
 
 class DeepLab(nn.Module):
-    def __init__(self, BatchNorm,backbone='resnet', output_stride=16, num_classes=21,freeze_bn=False):
+    def __init__(self, backbone='resnet', output_stride=16, num_classes=21,
+                 sync_bn=True, freeze_bn=False):
         super(DeepLab, self).__init__()
-        self.backbone_type = backbone
         if backbone == 'drn':
             output_stride = 8
+
+        if sync_bn == True:
+            BatchNorm = SynchronizedBatchNorm2d
+        else:
+            BatchNorm = nn.BatchNorm2d
 
         self.backbone = build_backbone(backbone, output_stride, BatchNorm)
         self.aspp = build_aspp(backbone, output_stride, BatchNorm)
@@ -21,15 +26,9 @@ class DeepLab(nn.Module):
             self.freeze_bn()
 
     def forward(self, input):
-        outputs= self.backbone(input)
-        x = self.aspp(outputs[0])
-        if(self.backbone_type=='xception'):#不同的backbone有不同的输出，处理不同
-            low_level_feat=outputs[1]
-        elif(self.backbone_type=='resnet'):
-            low_level_feat = outputs[3]
-
+        x, low_level_feat = self.backbone(input)
+        x = self.aspp(x)
         x = self.decoder(x, low_level_feat)
-        # print(x.size())
         x = F.interpolate(x, size=input.size()[2:], mode='bilinear', align_corners=True)
 
         return x
@@ -62,11 +61,10 @@ class DeepLab(nn.Module):
                             yield p
 
 
-
 if __name__ == "__main__":
-    model = DeepLab(backbone='xception', BatchNorm=nn.BatchNorm2d,output_stride=16)
+    model = DeepLab(backbone='mobilenet', output_stride=16)
     model.eval()
-    input = torch.rand(1, 3, 512, 512)
+    input = torch.rand(1, 3, 513, 513)
     output = model(input)
     print(output.size())
 

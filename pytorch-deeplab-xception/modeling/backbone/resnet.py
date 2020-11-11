@@ -152,6 +152,14 @@ def ResNet101(output_stride, BatchNorm, pretrained=True):
     model = ResNet(Bottleneck, [3, 4, 23, 3], output_stride, BatchNorm, pretrained=pretrained)
     return model
 
+def ResNet50(output_stride, BatchNorm, pretrained=True):
+    """Constructs a ResNet-101 model.
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+    """
+    model = ResNet(Bottleneck, [3, 4, 6, 3], output_stride, BatchNorm, pretrained=pretrained)
+    return model
+
 if __name__ == "__main__":
     import torch
     model = ResNet101(BatchNorm=nn.BatchNorm2d, pretrained=True, output_stride=8)

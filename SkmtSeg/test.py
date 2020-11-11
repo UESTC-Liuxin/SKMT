@@ -67,46 +67,27 @@ class Tester(object):
         self.model.eval()
         total_batches = len(self.dataloader)
 
-        Tloss=[]
+        tloss = []
         with torch.no_grad():
             for iter, batch in enumerate(self.dataloader, 0):
-                tloss = []
-                preds = []
                 self.logger.info('======>images:{},start inference'.format(iter))
                 start_time = time.time()
+
                 batch = self.dict_to_cuda(batch)
-                print(len(batch['outer_imgs']))
-                for i in range(len(batch['outer_imgs'])):
-                    output=self.model({'centre_imgs':batch['centre_imgs'][i],
-                                       'outer_imgs':batch['outer_imgs'][i]})
-                    loss=self.criterion(output,{'outer_labels':batch['outer_labels'][i].cuda(),
-                                                'centre_labels':batch['centre_labels'][i].cuda()})
-                    tloss.append(loss.item())
+                output = self.model(batch)
+                loss = self.criterion(output, batch).cuda()
 
-                    #记录一下每个小patch的loss
-                    self.logger.info('======>images:{},sub{},loss:{:.3f}'.format(iter, i, loss.item()))
+                tloss.append(loss.item())
 
-                    #提取pred_label
-                    out=np.asarray(np.argmax(output['out'].cpu().detach().squeeze(0), axis=0), dtype=np.uint8)
-                    #TODO:这里测试一下
-                    # label=np.asarray(batch['centre_labels'][i].cpu().detach(), dtype=np.uint8)
-                    # preds.append(label)
+                gt=np.asarray(batch['label'].cpu().detach().squeeze(0), dtype=np.uint8)
+                pred = np.asarray(np.argmax(output['trunk_out'][0].cpu().detach(), axis=0), dtype=np.uint8)
 
-                    preds.append(out)
-
-                #记录一下每张图片的loss
-                self.logger.info('======>images:{},loss:{:.3f}'.format(iter,sum(tloss)/len(tloss)))
-
-                Tloss.append(sum(tloss)/len(tloss))
-                gt=np.asarray(batch['source_label'].cpu().detach().squeeze(0), dtype=np.uint8)
-                # print(source_label.shape)
-                # print(preds[0].shape)
-                pred=self.dataloader.dataset.ConvergeLable(preds,gt)
-                self.visualize(gt,pred, iter, writer)
                 self.running_Metrics.update(gt, pred)
+                if(iter%self.args.show_val_interval ==0):
+                    self.visualize(gt, pred, iter, writer,"test")
 
-        self.logger.info('======>epoch:{}---loss:{:.3f}'.format(epoch,sum(Tloss)/len(Tloss)))
-        writer.add_scalar('test/loss_epoch', sum(Tloss)/len(Tloss), epoch)
+        self.logger.info('======>epoch:{}---loss:{:.3f}'.format(epoch,sum(tloss)/len(tloss)))
+        writer.add_scalar('test/loss_epoch', sum(tloss)/len(tloss), epoch)
         score, class_iou, class_F1 = self.running_Metrics.get_scores()
         self.running_Metrics.reset()
 
@@ -116,7 +97,7 @@ class Tester(object):
 
 
 
-    def visualize(self,gt,pred,epoch,writer):
+    def visualize(self,gt,pred,epoch,writer,title):
         """
 
         :param input:
@@ -127,8 +108,8 @@ class Tester(object):
         gt = self.dataloader.dataset.decode_segmap(gt)
 
         pred=self.dataloader.dataset.decode_segmap(pred)
-        self.summary.visualize_image(writer,'gt',gt,epoch)
-        self.summary.visualize_image(writer, 'pred', pred, epoch)
+        self.summary.visualize_image(writer,title+'/gt',gt,epoch)
+        self.summary.visualize_image(writer, title+'/pred', pred, epoch)
 
 #TODO:用于调试的visualize代码，观察取的图片和裁剪的图片是否有问题
 def visualize(img,tag):

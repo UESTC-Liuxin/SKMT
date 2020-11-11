@@ -145,7 +145,10 @@ runs_*
 *.pth
 
 
-RemoteSensorSeg/data
-RemoteSensorSeg/runs
+SkmtSeg/data
+SkmtSeg/runs
+*.jpg
+*png
+
 
 

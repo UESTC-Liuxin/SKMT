@@ -10,5 +10,5 @@ python /media/Program/CV/Project/SKMT/mmsegmentation/tools/convert_datasets/rand
 
 #上传
 
-scp -r /media/Program/CV/dataset/SKMT/Seg liuxin@192.168.1.110:/home/liuxin/Documents/SKMT/mmsegmentation/data/SKMT/Seg
+scp -r /media/Program/CV/dataset/SKMT/Seg liuxin@192.168.1.110:/home/liuxin/Documents/SKMT/mmsegmentation/data/SKMT/
 

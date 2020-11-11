@@ -44,9 +44,10 @@ class Bottleneck(nn.Module):
 
 class ResNet(nn.Module):
 
-    def __init__(self, block, layers, output_stride, BatchNorm, pretrained=True):
+    def __init__(self, name,block, layers, output_stride, BatchNorm, pretrained=True):
         self.inplanes = 64
         super(ResNet, self).__init__()
+        self.name=name
         blocks = [1, 2, 4]
         if output_stride == 16:
             strides = [1, 2, 2, 1]
@@ -121,7 +122,17 @@ class ResNet(nn.Module):
         x3=x = self.layer2(x)
         x4=x = self.layer3(x)
         x5= self.layer4(x)
-        return (x5,x4,x3,x2,x1)
+        return (x5,x4,x3,x2,x1,x0)
+
+    def get_1x_lr_params(self):
+        modules = [self.backbone]
+        for i in range(len(modules)):
+            for m in modules[i].named_modules():
+                if isinstance(m[1], nn.Conv2d) or isinstance(m[1], SynchronizedBatchNorm2d) \
+                        or isinstance(m[1], nn.BatchNorm2d):
+                    for p in m[1].parameters():
+                        if p.requires_grad:
+                            yield p
 
     def _init_weight(self):
         for m in self.modules():
@@ -150,7 +161,7 @@ def ResNet101(output_stride, BatchNorm, pretrained=True):
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
-    model = ResNet(Bottleneck, [3, 4, 23, 3], output_stride, BatchNorm, pretrained=pretrained)
+    model = ResNet("resnet101",Bottleneck, [3, 4, 23, 3], output_stride, BatchNorm, pretrained=pretrained)
     return model
 
 def ResNet50(output_stride, BatchNorm, pretrained=True):
@@ -158,13 +169,13 @@ def ResNet50(output_stride, BatchNorm, pretrained=True):
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
-    model = ResNet(Bottleneck, [3, 4, 6, 3], output_stride, BatchNorm, pretrained=pretrained)
+    model = ResNet("resnet50",Bottleneck, [3, 4, 6, 3], output_stride, BatchNorm, pretrained=pretrained)
     return model
 
 if __name__ == "__main__":
     import torch
-    model = ResNet101(BatchNorm=nn.BatchNorm2d, pretrained=True, output_stride=8)
+    model = ResNet101(BatchNorm=nn.BatchNorm2d, pretrained=True, output_stride=16)
     input = torch.rand(1, 3, 512, 512)
     x0, x1, x2, x3, x4, x5 = model(input)
-    print(x5.size())
-    print(x4.size())
+    print(x0.size())
+    print(x1.size())

@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4654454-7353-40b4-b7fd-9887a2c13ddd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tools/mirr_pdding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataloader/vaihingen.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloader/vaihingen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeplab_resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeplab_resnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeplab_resnet_deeplab_resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeplab_resnet_deeplab_resnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmsegmentation/update_upload_dataset.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../mmsegmentation/update_upload_dataset.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/dataloaders/custom_transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/dataloaders/custom_transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/modeling/backbone/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/modeling/backbone/resnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/train_skmt.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/train_skmt.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1jgo7p2wtSnBKeeuVha3WO8COBv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -35,16 +34,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SKMT/mmsegmentation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../RemoteSensor/FCN-pytorch-master" />
     <property name="settings.editor.selected.configurable" value="PyScientificConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/modeling/head" />
+      <recent name="$PROJECT_DIR$/modeling/model_utils" />
+      <recent name="$PROJECT_DIR$/modeling" />
+      <recent name="$PROJECT_DIR$/modeling/sync_batchnorm" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.vaihingen">
-    <configuration name="base" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Shell Script.deeplab_resnet.sh (1)">
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RemoteSensorSeg" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -52,35 +55,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataloader" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modeling" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataloader/base.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modeling/__init__.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="deeplab_resnet_deeplab_resnet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RemoteSensorSeg" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/deeplab_resnet_deeplab_resnet.py" />
-      <option name="PARAMETERS" value="--resume $PROJECT_DIR$/runs/deeplab_resnet__deeplabv3_resnet/lr0.001_bz22020-11-03_12:17/erftsnbs2gpu1/model.pth" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -110,29 +91,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="mirr_pdding" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="RemoteSensorSeg" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/mirr_pdding.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="vaihingen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="skmt (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RemoteSensorSeg" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -145,7 +104,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataloader/vaihingen.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataloader/skmt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -154,20 +113,36 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="deeplab_resnet.sh (1)" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/deeplab_resnet.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="deeplab_resnet.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/deeplab_resnet.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.deeplab_resnet_deeplab_resnet" />
+      <item itemvalue="Python.__init__" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.vaihingen" />
-      <item itemvalue="Python.base" />
-      <item itemvalue="Python.mirr_pdding" />
+      <item itemvalue="Python.skmt (1)" />
+      <item itemvalue="Shell Script.deeplab_resnet.sh" />
+      <item itemvalue="Shell Script.deeplab_resnet.sh (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.vaihingen" />
-        <item itemvalue="Python.mirr_pdding" />
-        <item itemvalue="Python.deeplab_resnet_deeplab_resnet" />
-        <item itemvalue="Python.base" />
+        <item itemvalue="Shell Script.deeplab_resnet.sh (1)" />
+        <item itemvalue="Shell Script.deeplab_resnet.sh" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.skmt (1)" />
+        <item itemvalue="Python.__init__" />
       </list>
     </recent_temporary>
   </component>
@@ -193,6 +168,15 @@
       <workItem from="1604539968144" duration="94000" />
       <workItem from="1604540544313" duration="1238000" />
       <workItem from="1604541889492" duration="35000" />
+      <workItem from="1604558765227" duration="1396000" />
+      <workItem from="1604565990984" duration="653000" />
+      <workItem from="1604575595174" duration="25000" />
+      <workItem from="1604889362627" duration="5347000" />
+      <workItem from="1604906716020" duration="169000" />
+      <workItem from="1604906994352" duration="867000" />
+      <workItem from="1604916028271" duration="3000" />
+      <workItem from="1604975434152" duration="16157000" />
+      <workItem from="1605059415575" duration="24117000" />
     </task>
     <servers />
   </component>
@@ -200,10 +184,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1074" y="168" width="800" height="684" key="#Deployment" timestamp="1604332391796">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="2475" y="215" width="800" height="684" key="#Deployment" timestamp="1604889574160">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="215" width="800" height="684" key="#Deployment/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604304968672" />
+    <state x="2475" y="215" width="800" height="684" key="#Deployment/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604889574160" />
     <state x="1074" y="168" width="800" height="684" key="#Deployment/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604332391796" />
     <state x="588" y="201" width="800" height="684" key="#Log_Highlighting_(ideolog)" timestamp="1604539933812">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -213,85 +197,125 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="451" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604377253098" />
-    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl" timestamp="1604541904826">
+    <state x="2613" y="300" width="524" height="514" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604890840181">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2613" y="300" width="524" height="514" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604890840181" />
+    <state x="2683" y="437" width="384" height="240" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1605091212351">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2683" y="437" width="384" height="240" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605091212351" />
+    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605060277002">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604541904826" />
-    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604540052829" />
-    <state width="1866" height="197" key="GridCell.Tab.0.bottom" timestamp="1604541782128">
+    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605060277002" />
+    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604566042463" />
+    <state width="1866" height="335" key="GridCell.Tab.0.bottom" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="197" key="GridCell.Tab.0.bottom/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604541782128" />
+    <state width="1866" height="335" key="GridCell.Tab.0.bottom/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="365" key="GridCell.Tab.0.bottom/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604401274531" />
-    <state width="1866" height="197" key="GridCell.Tab.0.center" timestamp="1604541782128">
+    <state width="1866" height="335" key="GridCell.Tab.0.center" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="197" key="GridCell.Tab.0.center/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604541782128" />
+    <state width="1866" height="335" key="GridCell.Tab.0.center/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="365" key="GridCell.Tab.0.center/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604401274531" />
-    <state width="1866" height="197" key="GridCell.Tab.0.left" timestamp="1604541782128">
+    <state width="1866" height="335" key="GridCell.Tab.0.left" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="197" key="GridCell.Tab.0.left/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604541782128" />
+    <state width="1866" height="335" key="GridCell.Tab.0.left/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="365" key="GridCell.Tab.0.left/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604401274531" />
-    <state width="1866" height="197" key="GridCell.Tab.0.right" timestamp="1604541782128">
+    <state width="1866" height="335" key="GridCell.Tab.0.right" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="197" key="GridCell.Tab.0.right/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604541782128" />
+    <state width="1866" height="335" key="GridCell.Tab.0.right/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="365" key="GridCell.Tab.0.right/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604401274531" />
-    <state width="1866" height="335" key="GridCell.Tab.1.bottom" timestamp="1604486921210">
+    <state width="1866" height="335" key="GridCell.Tab.1.bottom" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="335" key="GridCell.Tab.1.bottom/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604486921210" />
+    <state width="1866" height="335" key="GridCell.Tab.1.bottom/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="346" key="GridCell.Tab.1.bottom/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604247010456" />
-    <state width="1866" height="335" key="GridCell.Tab.1.center" timestamp="1604486921210">
+    <state width="1866" height="335" key="GridCell.Tab.1.center" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="335" key="GridCell.Tab.1.center/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604486921210" />
+    <state width="1866" height="335" key="GridCell.Tab.1.center/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="346" key="GridCell.Tab.1.center/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604247010456" />
-    <state width="1866" height="335" key="GridCell.Tab.1.left" timestamp="1604486921210">
+    <state width="1866" height="335" key="GridCell.Tab.1.left" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="335" key="GridCell.Tab.1.left/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604486921210" />
+    <state width="1866" height="335" key="GridCell.Tab.1.left/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="346" key="GridCell.Tab.1.left/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604247010456" />
-    <state width="1866" height="335" key="GridCell.Tab.1.right" timestamp="1604486921210">
+    <state width="1866" height="335" key="GridCell.Tab.1.right" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1866" height="335" key="GridCell.Tab.1.right/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604486921210" />
+    <state width="1866" height="335" key="GridCell.Tab.1.right/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605094392015" />
     <state width="1799" height="346" key="GridCell.Tab.1.right/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604247010456" />
     <state x="2343" y="152" width="1037" height="737" key="SettingsEditor" timestamp="1604286898435">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2343" y="152" key="SettingsEditor/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604286898435" />
     <state x="475" y="175" width="1037" height="737" key="SettingsEditor/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604243055953" />
-    <state x="645" y="226" width="696" height="628" key="find.popup" timestamp="1604250087231">
+    <state x="91" y="100" width="1469" height="723" maximized="true" key="dock-window-1" timestamp="1605090713099">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
+    <state x="91" y="100" width="1469" height="723" maximized="true" key="dock-window-1/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605090713099" />
+    <state x="290" y="27" width="1469" height="723" key="dock-window-2" timestamp="1605090723491">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="290" y="27" width="1469" height="723" key="dock-window-2/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605090723491" />
+    <state x="160" y="93" width="1469" height="723" maximized="true" key="dock-window-3" timestamp="1605090825694">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="160" y="93" width="1469" height="723" maximized="true" key="dock-window-3/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605090825694" />
+    <state x="218" y="27" width="1469" height="723" key="dock-window-4" timestamp="1605090894156">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="218" y="27" width="1469" height="723" key="dock-window-4/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605090894156" />
+    <state x="239" y="27" width="1469" height="723" maximized="true" key="dock-window-5" timestamp="1605090894156">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="239" y="27" width="1469" height="723" maximized="true" key="dock-window-5/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605090894156" />
+    <state x="681" y="203" width="966" height="645" key="find.popup" timestamp="1605092805205">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="681" y="203" width="966" height="645" key="find.popup/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605092805205" />
     <state x="645" y="226" width="696" height="628" key="find.popup/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604250087231" />
     <state x="892" y="240" width="400" height="685" key="ftp.server.browser" timestamp="1604332345835">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="2775" y="218" width="400" height="685" key="ftp.server.browser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604295780125" />
     <state x="892" y="240" key="ftp.server.browser/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604332345835" />
-    <state x="2744" y="443" width="262" height="235" key="publish.login" timestamp="1604457312099">
+    <state x="2744" y="443" width="272" height="235" key="publish.login" timestamp="1604889563797">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2744" y="443" width="262" height="235" key="publish.login/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604457312099" />
-    <state x="2543" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1604457697840">
+    <state x="2744" y="443" width="272" height="235" key="publish.login/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604889563797" />
+    <state x="2543" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1605093335042">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2543" y="259" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604457697840" />
+    <state x="2543" y="259" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605093335042" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/RemoteSensorSeg_debug$deeplab_resnet_deeplab_resnet.coverage" NAME="deeplab_resnet_deeplab_resnet Coverage Results" MODIFIED="1604306339217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RemoteSensorSeg$main.coverage" NAME="main Coverage Results" MODIFIED="1604333002647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1605061357677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modeling/head" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$skmt__1_.coverage" NAME="skmt (1) Coverage Results" MODIFIED="1605089761944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataloader" />
     <SUITE FILE_PATH="coverage/RemoteSensorSeg_debug$vaihingen.coverage" NAME="vaihingen Coverage Results" MODIFIED="1604325260599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataloader" />
-    <SUITE FILE_PATH="coverage/RemoteSensorSeg$train.coverage" NAME="train Coverage Results" MODIFIED="1604245067099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RemoteSensorSeg$base.coverage" NAME="base Coverage Results" MODIFIED="1604461555475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataloader" />
-    <SUITE FILE_PATH="coverage/RemoteSensorSeg$vaihingen.coverage" NAME="vaihingen Coverage Results" MODIFIED="1604541295173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataloader" />
-    <SUITE FILE_PATH="coverage/RemoteSensorSeg$set_logger.coverage" NAME="set_logger Coverage Results" MODIFIED="1604248803470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$skmt.coverage" NAME="skmt Coverage Results" MODIFIED="1605082748308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="/media/Program/CV/Project/SKMT/SkmtSeg/dataloader" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$fcn.coverage" NAME="fcn Coverage Results" MODIFIED="1605063581480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modeling/head" />
     <SUITE FILE_PATH="coverage/RemoteSensorSeg_debug$main.coverage" NAME="main Coverage Results" MODIFIED="1604331175719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RemoteSensorSeg$mirr_pdding.coverage" NAME="mirr_pdding Coverage Results" MODIFIED="1604486366745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/RemoteSensorSeg$deeplab_resnet_deeplab_resnet.coverage" NAME="deeplab_resnet_deeplab_resnet Coverage Results" MODIFIED="1604463895539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RemoteSensorSeg_debug$test.coverage" NAME="test Coverage Results" MODIFIED="1604325940751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1605084377932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modeling" />
+    <SUITE FILE_PATH="coverage/RemoteSensorSeg_debug$deeplab_resnet_deeplab_resnet.coverage" NAME="deeplab_resnet_deeplab_resnet Coverage Results" MODIFIED="1604306339217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RemoteSensorSeg$main.coverage" NAME="main Coverage Results" MODIFIED="1604333002647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RemoteSensorSeg$train.coverage" NAME="train Coverage Results" MODIFIED="1604245067099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RemoteSensorSeg$vaihingen.coverage" NAME="vaihingen Coverage Results" MODIFIED="1604541295173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataloader" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$resnet.coverage" NAME="resnet Coverage Results" MODIFIED="1604998027580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modeling/backbone" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$auxiliary_fcn.coverage" NAME="auxiliary_fcn Coverage Results" MODIFIED="1605080377564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modeling/head" />
+    <SUITE FILE_PATH="coverage/RemoteSensorSeg$set_logger.coverage" NAME="set_logger Coverage Results" MODIFIED="1604248803470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$xception.coverage" NAME="xception Coverage Results" MODIFIED="1605080494524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modeling/backbone" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$skmtnet.coverage" NAME="skmtnet Coverage Results" MODIFIED="1605061744355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modeling" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$main.coverage" NAME="main Coverage Results" MODIFIED="1605091789442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SkmtSeg$SE.coverage" NAME="SE Coverage Results" MODIFIED="1604891932491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
   </component>
 </project>

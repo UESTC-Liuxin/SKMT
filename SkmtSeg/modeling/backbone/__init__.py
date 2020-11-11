@@ -1,8 +1,10 @@
 from modeling.backbone import resnet, xception, drn, mobilenet
 
 def build_backbone(backbone, output_stride, BatchNorm):
-    if backbone == 'resnet':
+    if backbone == 'resnet50':
         return resnet.ResNet50(output_stride, BatchNorm)
+    elif backbone == 'resnet101':
+        return resnet.ResNet101(output_stride, BatchNorm)
     elif backbone == 'xception':
         return xception.AlignedXception(output_stride, BatchNorm)
     elif backbone == 'drn':

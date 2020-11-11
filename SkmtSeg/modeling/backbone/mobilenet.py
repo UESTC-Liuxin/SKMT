@@ -70,6 +70,8 @@ class InvertedResidual(nn.Module):
 class MobileNetV2(nn.Module):
     def __init__(self, output_stride=8, BatchNorm=None, width_mult=1., pretrained=True):
         super(MobileNetV2, self).__init__()
+
+        self.name="mobilnetv2"
         block = InvertedResidual
         input_channel = 32
         current_stride = 1

@@ -95,10 +95,10 @@ class AlignedXception(nn.Module):
     """
     Modified Alighed Xception
     """
-    def __init__(self, output_stride, BatchNorm,
+    def __init__(self,output_stride, BatchNorm,
                  pretrained=True):
         super(AlignedXception, self).__init__()
-
+        self.name="xception"
         if output_stride == 16:
             entry_block3_stride = 2
             middle_block_dilation = 1
@@ -281,7 +281,7 @@ class AlignedXception(nn.Module):
 
 if __name__ == "__main__":
     import torch
-    model = AlignedXception(BatchNorm=nn.BatchNorm2d, pretrained=True, output_stride=16)
+    model = AlignedXception(BatchNorm=nn.BatchNorm2d, pretrained=True, output_stride=8)
     input = torch.rand(1, 3, 512, 512)
     output, low_level_feat = model(input)
     print(output.size())
