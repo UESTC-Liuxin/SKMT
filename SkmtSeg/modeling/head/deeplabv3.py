@@ -6,6 +6,8 @@ from modeling.model_utils.aspp import build_aspp
 from modeling.model_utils.decoder import build_decoder
 from modeling.backbone import build_backbone
 
+
+
 class DeepLab(nn.Module):
     def __init__(self, backbone,BatchNorm, output_stride, num_classes,freeze_bn=False):
         super(DeepLab, self).__init__()

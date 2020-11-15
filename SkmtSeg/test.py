@@ -15,7 +15,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from metrics.metrics import runningScore, averageMeter
-
+from tqdm import tqdm
 
 
 
@@ -69,8 +69,9 @@ class Tester(object):
 
         tloss = []
         with torch.no_grad():
-            for iter, batch in enumerate(self.dataloader, 0):
-                self.logger.info('======>images:{},start inference'.format(iter))
+            pbar = tqdm(self.dataloader, ncols=100)
+            for iter, batch in enumerate(pbar):
+                pbar.set_description("Testing Processing epoach:{}".format(epoch))
                 start_time = time.time()
 
                 batch = self.dict_to_cuda(batch)
@@ -83,17 +84,16 @@ class Tester(object):
                 pred = np.asarray(np.argmax(output['trunk_out'][0].cpu().detach(), axis=0), dtype=np.uint8)
 
                 self.running_Metrics.update(gt, pred)
-                if(iter%self.args.show_val_interval ==0):
-                    self.visualize(gt, pred, iter, writer,"test")
+                self.visualize(gt, pred, iter, writer,"test")
 
         self.logger.info('======>epoch:{}---loss:{:.3f}'.format(epoch,sum(tloss)/len(tloss)))
         writer.add_scalar('test/loss_epoch', sum(tloss)/len(tloss), epoch)
-        score, class_iou, class_F1 = self.running_Metrics.get_scores()
+        score, class_iou, class_acc,class_F1 = self.running_Metrics.get_scores()
         self.running_Metrics.reset()
 
 
 
-        return score, class_iou, class_F1
+        return score, class_iou,class_acc, class_F1
 
 
 

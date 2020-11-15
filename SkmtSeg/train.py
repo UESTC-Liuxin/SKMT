@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from metrics.metrics import runningScore, averageMeter
-
+from tqdm import tqdm
 
 class Trainer(object):
 
@@ -77,7 +77,9 @@ class Trainer(object):
         self.model.train()
         total_batches = len(self.dataloader)
         tloss = []
-        for iter, batch in enumerate(self.dataloader, 0):
+        pbar=tqdm(self.dataloader,ncols=100)
+        for iter, batch in enumerate(pbar):
+            pbar.set_description("Training Processing epoach:{}".format(epoch))
             lr = self.adjust_learning_rate(
                 epoch=epoch,
                 max_epoch=self.args.max_epochs,
@@ -96,11 +98,11 @@ class Trainer(object):
             self.optimizer.step()
             tloss.append(loss.item())
 
-            if (epoch % self.args.show_interval == 0 and iter==0):
+            if (iter % self.args.show_interval == 0):
                 pred=np.asarray(np.argmax(output['trunk_out'][0].cpu().detach(), axis=0), dtype=np.uint8)
                 gt = batch['label'][0]  #每次显示第一张图片
                 gt=np.asarray(gt.cpu(), dtype=np.uint8)
-                self.visualize(gt, pred, iter,writer,"train")
+                self.visualize(gt, pred, epoch*1000+iter,writer,"train")
 
 
         self.logger.info('======>epoch:{}---loss:{:.3f}'.format(epoch,sum(tloss)/len(tloss)))

@@ -28,7 +28,7 @@ class SkmtNet(nn.Module):
         if(self.auxiliary):
             auxiliary_out=self.auxiliary(base_out)
         else:
-            auxiliary_out=0
+            auxiliary_out=None
 
         return {'auxiliary_out':auxiliary_out,'trunk_out':trunk_out}
 

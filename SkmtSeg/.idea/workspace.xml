@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4654454-7353-40b4-b7fd-9887a2c13ddd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../mmsegmentation/update_upload_dataset.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../mmsegmentation/update_upload_dataset.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/dataloaders/custom_transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/dataloaders/custom_transforms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/modeling/backbone/resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/modeling/backbone/resnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception/train_skmt.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../pytorch-deeplab-xception/train_skmt.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pytorch-deeplab-xception.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="JupyterTrust" id="110a6879-54fd-4cc9-9537-ab3704f35e6f" />
   <component name="ProjectId" id="1jgo7p2wtSnBKeeuVha3WO8COBv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -34,7 +31,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../RemoteSensor/FCN-pytorch-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="PyScientificConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -177,6 +174,17 @@
       <workItem from="1604916028271" duration="3000" />
       <workItem from="1604975434152" duration="16157000" />
       <workItem from="1605059415575" duration="24117000" />
+      <workItem from="1605105383020" duration="2288000" />
+      <workItem from="1605152229211" duration="678000" />
+      <workItem from="1605163711921" duration="540000" />
+      <workItem from="1605165029979" duration="13985000" />
+      <workItem from="1605199952366" duration="2175000" />
+      <workItem from="1605231945581" duration="12000" />
+      <workItem from="1605235004468" duration="840000" />
+      <workItem from="1605237785457" duration="25000" />
+      <workItem from="1605237884054" duration="17449000" />
+      <workItem from="1605360915626" duration="731000" />
+      <workItem from="1605369152301" duration="1716000" />
     </task>
     <servers />
   </component>
@@ -184,10 +192,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2475" y="215" width="800" height="684" key="#Deployment" timestamp="1604889574160">
+    <state x="2475" y="215" width="800" height="684" key="#Deployment" timestamp="1605252081884">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="215" width="800" height="684" key="#Deployment/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604889574160" />
+    <state x="2475" y="215" width="800" height="684" key="#Deployment/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605252081884" />
     <state x="1074" y="168" width="800" height="684" key="#Deployment/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604332391796" />
     <state x="588" y="201" width="800" height="684" key="#Log_Highlighting_(ideolog)" timestamp="1604539933812">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -197,19 +205,24 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="451" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604377253098" />
-    <state x="2613" y="300" width="524" height="514" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604890840181">
+    <state x="2479" y="350" width="792" height="413" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605189093329">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2479" y="350" width="792" height="413" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605189093329" />
+    <state x="736" y="320" width="524" height="514" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605323504361">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
     <state x="2613" y="300" width="524" height="514" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604890840181" />
+    <state x="736" y="320" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1605323504361" />
     <state x="2683" y="437" width="384" height="240" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1605091212351">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2683" y="437" width="384" height="240" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605091212351" />
-    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605060277002">
+    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605238508726">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605060277002" />
-    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604566042463" />
+    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605238508726" />
+    <state x="745" y="171" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1605106972549" />
     <state width="1866" height="335" key="GridCell.Tab.0.bottom" timestamp="1605094392015">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -275,15 +288,15 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="239" y="27" width="1469" height="723" maximized="true" key="dock-window-5/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605090894156" />
-    <state x="681" y="203" width="966" height="645" key="find.popup" timestamp="1605092805205">
+    <state x="681" y="203" width="966" height="645" key="find.popup" timestamp="1605249715271">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="681" y="203" width="966" height="645" key="find.popup/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605092805205" />
+    <state x="681" y="203" width="966" height="645" key="find.popup/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605249715271" />
     <state x="645" y="226" width="696" height="628" key="find.popup/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604250087231" />
-    <state x="892" y="240" width="400" height="685" key="ftp.server.browser" timestamp="1604332345835">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="2775" y="218" width="400" height="685" key="ftp.server.browser" timestamp="1605252080946">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2775" y="218" width="400" height="685" key="ftp.server.browser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1604295780125" />
+    <state x="2775" y="218" width="400" height="685" key="ftp.server.browser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1605252080946" />
     <state x="892" y="240" key="ftp.server.browser/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1604332345835" />
     <state x="2744" y="443" width="272" height="235" key="publish.login" timestamp="1604889563797">
       <screen x="1920" y="0" width="1920" height="1080" />

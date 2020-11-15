@@ -28,7 +28,7 @@ from test import Tester
 
 from dataloader.skmt import SkmtDataSet
 from modeling import build_skmtnet
-
+[]
 def main(args,logger,summary):
     cudnn.enabled = True     # Enables bencnmark mode in cudnn, to enable the inbuilt
     cudnn.benchmark = True   # cudnn auto-tuner to find the best algorithm to use for
@@ -81,7 +81,6 @@ def main(args,logger,summary):
 
 
     start_epoch = 0
-    flag = True
     best_epoch = 0.
     best_overall = 0.
     best_mIoU = 0.
@@ -96,19 +95,25 @@ def main(args,logger,summary):
     for epoch in range(start_epoch,args.max_epochs):
         trainer.train_one_epoch(epoch,writer)
 
-        if(epoch%101==0):
-            score, class_iou, class_F1=tester.test_one_epoch(epoch,writer)
+        if(epoch%args.show_val_interval==0):
+            score, class_iou, class_acc,class_F1=tester.test_one_epoch(epoch,writer)
 
+            logger.info('======>Now print overall info:')
             for k, v in score.items():
+                logger.info('======>{0:^18} {1:^10}'.format(k, v))
+
+            logger.info('======>Now print class acc')
+            for k, v in class_acc.items():
                 print('{}: {:.5f}'.format(k, v))
                 logger.info('======>{0:^18} {1:^10}'.format(k, v))
 
-            print('Now print class iou')
+
+            logger.info('======>Now print class iou')
             for k, v in class_iou.items():
                 print('{}: {:.5f}'.format(k, v))
                 logger.info('======>{0:^18} {1:^10}'.format(k, v))
 
-            print('Now print class_F1')
+            logger.info('======>Now print class_F1')
             for k, v in class_F1.items():
                 logger.info('======>{0:^18} {1:^10}'.format(k, v))
 
@@ -118,17 +123,17 @@ def main(args,logger,summary):
             if score["Overall Acc : \t"] > best_overall:
                 best_overall = score["Overall Acc : \t"]
                 # save model in best overall Acc
-                model_file_name = args.savedir + '/model.pth'
+                model_file_name = args.savedir + '/best_model.pth'
                 torch.save(model.state_dict(), model_file_name)
                 best_epoch = epoch
 
             if score["Mean F1 : \t"] > best_F1:
                 best_F1 = score["Mean F1 : \t"]
 
-            print(f"best mean IoU: {best_mIoU}")
-            print(f"best overall : {best_overall}")
-            print(f"best F1: {best_F1}")
-            print(f"best epoch: {best_epoch}")
+            logger.info("======>best mean IoU:{}".format(best_mIoU))
+            logger.info("======>best overall : {}".format(best_overall))
+            logger.info("======>best F1: {}".format(best_F1))
+            logger.info("======>best epoch: {}".format(best_epoch))
 
             # save the model
             model_file_name = args.savedir + '/model.pth'
@@ -148,7 +153,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Semantic Segmentation...')
 
     parser.add_argument('--model', default='skmtnet', type=str)
-    parser.add_argument('--auxiliary', default='fcn', type=str)
+    parser.add_argument('--auxiliary', default=None, type=str)
     parser.add_argument('--batch_size', default=2, type=int)
     parser.add_argument('--image_size', default=512, type=int)
     parser.add_argument('--crop_size', default=512, type=int)

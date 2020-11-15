@@ -17,7 +17,36 @@ class _ASPPModule(nn.Module):
     def forward(self, x):
         x = self.atrous_conv(x)
         x = self.bn(x)
+        return self.relu(x)
 
+    def _init_weight(self):
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                torch.nn.init.kaiming_normal_(m.weight)
+            elif isinstance(m, SynchronizedBatchNorm2d):
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+            elif isinstance(m, nn.BatchNorm2d):
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+
+class _ASPPModule2(nn.Module):
+    def __init__(self, inplanes, planes, kernel_size, padding, dilation, BatchNorm):
+        super(_ASPPModule2, self).__init__()
+        self.atrous_conv = nn.Conv2d(inplanes, inplanes, kernel_size=kernel_size, groups=inplanes,
+                                            stride=1, padding=padding, dilation=dilation, bias=False)
+        self.atrous_conv2 = nn.Conv2d(inplanes, planes, 1, bias=False)
+        self.bn = BatchNorm(inplanes)
+        self.relu = nn.ReLU()
+        self.bn2 = BatchNorm(planes)
+        self._init_weight()
+
+    def forward(self, x):
+        x = self.atrous_conv(x)
+        x = self.bn(x)
+        x = self.relu(x)
+        x = self.atrous_conv2(x)
+        x = self.bn2(x)
         return self.relu(x)
 
     def _init_weight(self):

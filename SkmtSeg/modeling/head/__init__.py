@@ -19,7 +19,8 @@ def build_head(head,backbone,BatchNorm, output_stride, num_classes):
 
 
 def build_auxiliary_head(head,backbone,BatchNorm, output_stride, num_classes):
-
+    if(head is None):
+        return None
     if(head=="fcn"):
         return auxiliary_fcn.AuxiliaryFCN(backbone,BatchNorm,output_stride,num_classes)
     else:

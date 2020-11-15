@@ -147,7 +147,12 @@ class ResNet(nn.Module):
                 m.bias.data.zero_()
 
     def _load_pretrained_model(self):
-        pretrain_dict = model_zoo.load_url('https://download.pytorch.org/models/resnet101-5d3b4d8f.pth')
+        if self.name =="resnet50":
+            pretrain_dict = model_zoo.load_url('https://download.pytorch.org/models/resnet50-19c8e357.pth')
+        elif self.name =="resnet101":
+            pretrain_dict = model_zoo.load_url('https://download.pytorch.org/models/resnet101-5d3b4d8f.pth')
+        else:
+            NotImplementedError
         model_dict = {}
         state_dict = self.state_dict()
         for k, v in pretrain_dict.items():

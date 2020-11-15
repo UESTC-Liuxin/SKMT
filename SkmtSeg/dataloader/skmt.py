@@ -135,7 +135,6 @@ class SkmtDataSet(Dataset):
         for ii, label in enumerate(cls.PALETTE):
             label_mask[np.where(np.all(mask == label, axis=-1))[:2]] = ii
         label_mask = label_mask.astype(int)
-        label_mask[label_mask == 6] = 255
         return label_mask
 
     @classmethod
@@ -169,8 +168,7 @@ class SkmtDataSet(Dataset):
         return 'skmt(split=' + str(self.split) + ')'
 
 
-# ['data/SKMT/Seg/JPEGImages/Shoulder12_200812_1 (37).jpg', 'data/SKMT/Seg/JPEGImages/Shoulder11_200812_13.jpg']
 
-img=Image.open('/home/liuxin/Documents/CV/Project/SKMT/SkmtSeg/data/SKMT/Seg/SegmentationClass/Shoulder11_200812_13.png')
-img=np.array(img)
-print(np.max(img))
+
+
+
